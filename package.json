@@ -1,0 +1,33 @@
+{
+  "name": "zetta-buzzer-bonescript-driver",
+  "version": "0.0.0",
+  "description": "Piezo buzzer bonescript driver for zetta",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adam Magaluk <AdamMagaluk@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zettajs/zetta-buzzer-bonescript-driver.git"
+  },
+  "dependencies": {
+    "zetta": "^0.3.0",
+    "zetta-auto-scout": "^0.2.0",
+    "bonescript": "0.2.4"
+  },
+  "bugs": {
+    "url": "https://github.com/zettajs/zetta-buzzer-bonescript-driver/issues"
+  },
+  "homepage": "https://github.com/zettajs/zetta-buzzer-bonescript-driver",
+  "directories": {
+    "example": "example"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "zetta",
+    "beaglebone",
+    "bonescript"
+  ]
+}
