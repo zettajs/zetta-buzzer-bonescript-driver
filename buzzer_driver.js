@@ -6,7 +6,6 @@ var Buzzer = module.exports = function(pin) {
   Device.call(this);
   this.pin = pin || 'P9_14';
   //Everything is off to start
-  bone.pinMode(this.pin, bone.OUTPUT);
   bone.analogWrite(this.pin, 0);
 };
 util.inherits(Buzzer, Device);
