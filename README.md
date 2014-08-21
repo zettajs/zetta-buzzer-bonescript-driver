@@ -13,9 +13,16 @@ var zetta = require('zetta');
 var Buzzer = require('zetta-buzzer-bonescript-driver');
 
 zetta()
-  .use(Buzzer)
+  .use(Buzzer, 'P9_14')
   .listen(1337)
 ```
+
+### Hardware
+
+* [Beagle Bone](http://beagleboard.org/black)
+* [Piezo Speaker](https://www.sparkfun.com/products/7950)
+
+![Hookup Diagram](docs/hookup_diagram_bb.png)
 
 ###Transitions
 
