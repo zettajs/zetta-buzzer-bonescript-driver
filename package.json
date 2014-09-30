@@ -23,9 +23,6 @@
   "directories": {
     "example": "example"
   },
-  "devDependencies": {
-    "zetta": "^0.11.0"
-  },
   "keywords": [
     "zetta",
     "beaglebone",
