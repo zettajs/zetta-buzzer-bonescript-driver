@@ -30,36 +30,36 @@ Buzzer.prototype.init = function(config) {
 // Swedish Standard SS 03 17 11, No. 4 “All clear”
 // Continuous 500 Hz
 Buzzer.prototype.turnOnContinuous = function(cb) {
-  this.state = 'continuous';
+  var state = 'continuous';
   var freq = 500;
   var onDuration = 500;
   var offDuration = 0;
-  this._tone(cb, freq, onDuration, offDuration);
+  this._tone(freq, onDuration, offDuration, state, cb);
 };
 
 // Swedish Standard SS 03 17 11, No. 1 “Imminent Danger”
 // Pulse tone 500 Hz
 Buzzer.prototype.turnOnPulse = function(cb) {
-  this.state = 'pulse';
+  var state = 'pulse';
   var freq = 500;
   var onDuration = 150;
   var offDuration = 100;
-  this._tone(cb, freq, onDuration, offDuration);
+  this._tone(freq, onDuration, offDuration, state, cb);
 };
 
 // “French fire sound” NF S 32-001-1975
 // Pulse tone 560 Hz
 Buzzer.prototype.turnOnAlternating = function(cb) {
-  this.state = 'alternating';
+  var state = 'alternating';
   var freq = 560;
   var onDuration = 100;
   var offDuration = 400;
-  this._tone(cb, freq, onDuration, offDuration);
+  this._tone(freq, onDuration, offDuration, state, cb);
 };
 
 Buzzer.prototype.beep = function(cb) {
-  var self = this;
   this.state = 'beep';
+  var self = this;
   this.turnOff(function() {
     self._buzz(100, 750); 
   });
@@ -67,23 +67,21 @@ Buzzer.prototype.beep = function(cb) {
 };
 
 Buzzer.prototype.turnOff = function(cb) {
-  this.state = 'off';
-  this._turnOff(cb);
-};
-
-Buzzer.prototype._turnOff = function(callback) {
   if (this._timer != undefined) {
     clearInterval(this._timer);
   }
   bone.analogWrite(this.pin, 0);
-  callback();
+  this.state = 'off';
+  cb();
 };
 
-Buzzer.prototype._tone = function(cb, freq, onDuration, offDuration) {
-  console.log('this._timer ' + this._timer);
-  this._turnOff(function(){});
-  this._timer = setInterval(this._buzz.bind(this, onDuration, freq), onDuration + offDuration);
-  cb();
+Buzzer.prototype._tone = function(freq, onDuration, offDuration, state, cb) {
+  var self = this;
+  this.turnOff(function(){
+    self._timer = setInterval(self._buzz.bind(self, onDuration, freq), onDuration + offDuration);
+    self.state = state;
+    cb();
+  });
 };
 
 Buzzer.prototype._buzz = function(delay, freq) {
