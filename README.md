@@ -30,6 +30,8 @@ zetta()
 
 No arguments. Turns on the buzzer continuously at 500Hz with a subtle blip every 500ms.
 
+This signal conforms to Swedish Standard SS 03 17 11, No. 4 "All clear"
+
 #####turn-on-pulse
 
 No arguments. Alternately turn the buzzer on at 500Hz for 150 ms then off for 100ms.
