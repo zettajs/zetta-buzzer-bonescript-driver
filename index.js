@@ -23,11 +23,14 @@ Buzzer.prototype.init = function(config) {
     .map('turn-off', this.turnOff);
 };
 
+// Swedish Standard SS 03 17 11, No. 1 “Imminent Danger”
+// Pulse tone 500 Hz
 Buzzer.prototype.turnOn = function(cb) {
-  var delay = 100;
-  var freq = 750;
+  var onDuration = 150;
+  var offDuration = 100;
+  var freq = 500;
   this.state = 'on';
-  this._timer = setInterval(this._beep.bind(this, delay, freq), delay * 2);
+  this._timer = setInterval(this._beep.bind(this, onDuration, freq), onDuration + offDuration);
   cb();
 };
 
