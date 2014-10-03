@@ -34,7 +34,9 @@ Buzzer.prototype.turnOnContinuous = function(cb) {
   var freq = 500;
   var onDuration = 500;
   var offDuration = 0;
-  this._tone(freq, onDuration, offDuration, state, cb);
+  this._tone(freq, onDuration, offDuration, state, function() {
+    cb();
+  });
 };
 
 // Swedish Standard SS 03 17 11, No. 1 “Imminent Danger”
@@ -44,7 +46,9 @@ Buzzer.prototype.turnOnPulse = function(cb) {
   var freq = 500;
   var onDuration = 150;
   var offDuration = 100;
-  this._tone(freq, onDuration, offDuration, state, cb);
+  this._tone(freq, onDuration, offDuration, state, function() {
+    cb();
+  });
 };
 
 // “French fire sound” NF S 32-001-1975
@@ -54,7 +58,9 @@ Buzzer.prototype.turnOnAlternating = function(cb) {
   var freq = 560;
   var onDuration = 100;
   var offDuration = 400;
-  this._tone(freq, onDuration, offDuration, state, cb);
+  this._tone(freq, onDuration, offDuration, state, function() {
+    cb();
+  });
 };
 
 Buzzer.prototype.beep = function(cb) {
