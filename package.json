@@ -1,6 +1,6 @@
 {
   "name": "zetta-buzzer-bonescript-driver",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Piezo buzzer bonescript driver for zetta",
   "main": "index.js",
   "scripts": {
@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "bonescript": "0.2.4",
+    "zetta-auto-scout": "^0.5.0",
     "zetta-device": "^0.3.0"
   },
   "bugs": {
