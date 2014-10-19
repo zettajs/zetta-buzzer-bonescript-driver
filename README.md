@@ -26,7 +26,7 @@ zetta()
 
 ###Transitions
 
-#####turn-on-continuous
+#####turn-on
 
 No arguments. Turns on the buzzer continuously at 500Hz.
 
