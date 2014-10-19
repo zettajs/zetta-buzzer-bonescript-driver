@@ -13,13 +13,13 @@ Buzzer.prototype.init = function(config) {
     .state('off')
     .type('buzzer')
     .name('Buzzer')
-    .when('off', { allow: ['turn-on-continuous', 'turn-on-pulse', 'turn-on-alternating', 'beep']})
-    .when('continuous', { allow: ['turn-off', 'turn-on-pulse', 'turn-on-alternating', 'beep'] })
-    .when('pulse', { allow: ['turn-off', 'turn-on-continuous', 'turn-on-alternating', 'beep'] })
-    .when('alternating', { allow: ['turn-off', 'turn-on-continuous', 'turn-on-pulse', 'beep'] })
+    .when('off', { allow: ['turn-on', 'turn-on-pulse', 'turn-on-alternating', 'beep']})
+    .when('on', { allow: ['turn-off', 'turn-on-pulse', 'turn-on-alternating', 'beep'] })
+    .when('pulse', { allow: ['turn-off', 'turn-on', 'turn-on-alternating', 'beep'] })
+    .when('alternating', { allow: ['turn-off', 'turn-on', 'turn-on-pulse', 'beep'] })
     .when('beep', { allow: [] })
     .map('beep', this.beep)
-    .map('turn-on-continuous', this.turnOnContinuous)
+    .map('turn-on', this.turnOn)
     .map('turn-on-pulse', this.turnOnPulse)
     .map('turn-on-alternating', this.turnOnAlternating)
     .map('turn-off', this.turnOff);
@@ -30,8 +30,8 @@ Buzzer.prototype.init = function(config) {
 
 // Swedish Standard SS 03 17 11, No. 4 “All clear”
 // Continuous 500 Hz
-Buzzer.prototype.turnOnContinuous = function(cb) {
-  var state = 'continuous';
+Buzzer.prototype.turnOn = function(cb) {
+  var state = 'on';
   var freq = 500;
   var onDuration = 500;
   var offDuration = 0;
