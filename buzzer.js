@@ -97,4 +97,3 @@ Buzzer.prototype._buzz = function(delay, freq) {
     }, delay);
   });
 };
-
