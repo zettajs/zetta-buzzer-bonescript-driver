@@ -33,7 +33,7 @@ Buzzer.prototype.init = function(config) {
 Buzzer.prototype.turnOn = function(cb) {
   var state = 'on';
   var freq = 500;
-  var onDuration = 500;
+  var onDuration = Infinity;
   var offDuration = 0;
   this._pattern(freq, onDuration, offDuration, state, cb);
 };
@@ -79,7 +79,11 @@ Buzzer.prototype.turnOff = function(cb) {
 Buzzer.prototype._pattern = function(freq, onDuration, offDuration, state, cb) {
   var self = this;
   this.turnOff(function(){
-    self._timer = setInterval(self._buzz.bind(self, onDuration, freq), onDuration + offDuration);
+    if (onDuration === Infinity || offDuration === 0) {
+      bone.analogWrite(self.pin, 0.5, freq);
+    } else {
+      self._timer = setInterval(self._buzz.bind(self, onDuration, freq), onDuration + offDuration);
+    }
     self.state = state;
     cb();
   });
