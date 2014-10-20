@@ -26,9 +26,9 @@ zetta()
 
 ###Transitions
 
-#####turn-on-continuous
+#####turn-on
 
-No arguments. Turns on the buzzer continuously at 500Hz with a subtle blip every 500ms.
+No arguments. Turns on the buzzer continuously at 500Hz.
 
 This signal conforms to Swedish Standard SS 03 17 11, No. 4 "All clear"
 
