@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "zetta": "^0.14.0"
+    "zetta": "^0.33.0"
   }
 }
